@@ -16,9 +16,9 @@ public class Student_Login {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/mydatabase", "root", "Luxan@22"
+                    "jdbc:mysql://localhost:3306/unidb", "root", "Luxan@22"
             );
-            String sql = "SELECT * FROM emp WHERE Username = ?";
+            String sql = "SELECT * FROM emp WHERE uname = ?";
             String Name = null,course = null;
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, uname);
@@ -27,7 +27,7 @@ public class Student_Login {
                  Name = rs.getString(2);
             }
             System.out.println("Hi "+Name+"\nYou have successfully registered for the following courses");
-            String sqll = "SELECT * FROM course WHERE username = ?";
+            String sqll = "SELECT * FROM course WHERE uname = ?";
             PreparedStatement sts = con.prepareStatement(sqll);
             ResultSet result = sts.executeQuery();
            if( result.next()) {
