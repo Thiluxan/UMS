@@ -29,7 +29,7 @@ public class Student_Login {
             System.out.println("Hi "+Name+"\nYou have successfully registered for the following courses");
             String sqll = "SELECT * FROM course WHERE username = ?";
             PreparedStatement sts = con.prepareStatement(sqll);
-            ResultSet result = st.executeQuery();
+            ResultSet result = sts.executeQuery();
            if( result.next()) {
                course = result.getString(2);
            }
