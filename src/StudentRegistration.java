@@ -25,10 +25,10 @@ public class StudentRegistration {
         try{
            Class.forName("com.mysql.jdbc.Driver");
            Connection con = DriverManager.getConnection(
-                   "jdbc:mysql://localhost:3306/mydatabase", "root", "Luxan@22"
+                   "jdbc:mysql://localhost:3306/unidb", "root", "Luxan@22"
            );
            Statement st = con.createStatement();
-           PreparedStatement sts = con.prepareStatement("INSERT INTO emp (Username, Name, Age, Password) VALUES (?, ?, ?,?)");
+           PreparedStatement sts = con.prepareStatement("INSERT INTO emp (uname, name, age, password) VALUES (?, ?, ?,?)");
         		   sts.setString(1, uname);
         		   sts.setString(2, name);
         		   sts.setInt(3, age);
@@ -44,10 +44,10 @@ public class StudentRegistration {
        try {
     	   Class.forName("com.mysql.jdbc.Driver");
            Connection con = DriverManager.getConnection(
-                   "jdbc:mysql://localhost:3306/mydatabase", "root", "Luxan@22"
+                   "jdbc:mysql://localhost:3306/unidb", "root", "Luxan@22"
            );
            Statement sta = con.createStatement();
-           PreparedStatement sts = con.prepareStatement("INSERT INTO course (username,course) VALUES (?,?)");
+           PreparedStatement sts = con.prepareStatement("INSERT INTO course (unane,course) VALUES (?,?)");
         switch(select) {
             case 1:
                 System.out.println("Subject: SENG 11111 - Introduction to Programming");
