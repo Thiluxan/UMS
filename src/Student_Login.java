@@ -18,15 +18,24 @@ public class Student_Login {
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/mydatabase", "root", "Luxan@22"
             );
-            Statement st = con.createStatement();
-            ResultSet result =  st.executeQuery("select * from emp where Username = "+uname);
-            result.next();
-            String Name = result.getString(2);
-            System.out.println("Hi "+Name+"You have successfully registered for the following courses");
-            ResultSet rs = st.executeQuery("select * from course where username ="+ uname);
-            result.next();
-            String course = rs.getString(2);
-            System.out.println(course);
+            String sql = "SELECT * FROM emp WHERE Username = ?";
+            String Name = null,course = null;
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, uname);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                 Name = rs.getString(2);
+            }
+            System.out.println("Hi "+Name+"\nYou have successfully registered for the following courses");
+            String sqll = "SELECT * FROM course WHERE username = ?";
+            PreparedStatement sts = con.prepareStatement(sqll);
+            ResultSet result = st.executeQuery();
+           if( result.next()) {
+               course = result.getString(2);
+           }
+           System.out.println(course);
+
+
             con.close();
         }catch(Exception e) {System.out.println(e);}
     }
@@ -39,7 +48,7 @@ public class Student_Login {
     		System.out.println("Bye");
     		break;
     	case 2:
-    		StudentRegistration SR = new StudentRegistration();
+    		Student_Registration SR = new Student_Registration();
     		SR.input();
     		SR.add();
     		SR.Display();
