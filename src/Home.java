@@ -11,7 +11,7 @@ public class Home {
       int selection = sc.nextInt();
       System.out.println("Please select your registration role [1] leccturer [2] Student");
       int s1 = sc.nextInt();
-      Student_Registration stu = new Student_Registration();
+      StudentRegistration stu = new StudentRegistration();
       Student_Login SL = new Student_Login();
       switch(selection) {
          case 1:
